@@ -1,5 +1,6 @@
 import React, {useEffect} from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet, Image, StatusBar} from 'react-native';
+import {SplashImage} from '../../assets';
 
 const Splash = ({navigation}) => {
     useEffect(() => {
@@ -9,9 +10,11 @@ const Splash = ({navigation}) => {
     }, [navigation]);
     return(
         <View style={styles.container}>
-            <Text style={styles.text}>APLIKASI</Text>
-            <Text style={styles.text}>PENDAKIAN</Text>
-            <Text style={styles.text}>GUNUNG</Text>
+            <StatusBar backgroundColor='#43cad1' barStyle="dark-content" translucent/>
+            <Image source={SplashImage}/>
+            <View>
+                <Text style={styles.text}>ARTIKEL ' KU</Text>
+            </View>
         </View>
     )
 }
@@ -23,9 +26,12 @@ const styles = StyleSheet.create({
         flex:1,
         justifyContent:'center',
         alignItems: 'center',
+        backgroundColor:'#43cad1'
     },
     text:{
-        fontSize: 25,
-        fontWeight: 'bold'
+        textAlign:'center',
+        fontSize: 30,
+        fontWeight: 'bold',
+        color:'white'
     }
 })

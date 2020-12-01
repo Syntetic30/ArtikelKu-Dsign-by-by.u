@@ -1,94 +1,178 @@
 import React from 'react';
-import { View, Text, StyleSheet, Dimensions, TouchableOpacity, Image, ScrollView, } from 'react-native';
-import {
-    GunungBromo,
-    GunungIjen,
-    GunungPrau,
-    GunungRinjani,
-    GunungSemeru}
-from '../../assets';
+import { StyleSheet, Text, View, Image, StatusBar, TouchableOpacity, ScrollView, Dimensions } from 'react-native';
+import {MainImage} from '../../assets'; 
 
-let data = [
+let data =[
     {
-        key: 1,
-        gambar: GunungBromo,
-        gunung: 'Gunung Bromo',
-        keterangan: 'Gunung yang satu ini sudah sangat terkenal di tengah masyarakat karena pemandangannya yang begitu indah. Gunung Bromo memiliki ketinggian 2.329 mdpl dan terletak di Jawa Timur.'
+        key:1,
+        image:MainImage,
+        title:"Kasus Pelanggaran Ham",
+        isi:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ac arcu quis quam vehicula aliquam. Nulla in molestie augue. Integer laoreet non purus et porta. Mauris viverra nulla vitae justo imperdiet gravida. Sed neque ipsum, ornare suscipit magna et, accumsan pulvinar felis. Vestibulum malesuada pulvinar sapien, cursus luctus nulla. Nullam id velit nec odio eleifend maximus. Pellentesque tristique lectus at eros ornare, at tempus est condimentum. Morbi semper orci id nulla imperdiet varius. Pellentesque faucibus enim ipsum, ac pulvinar nulla viverra at. Praesent non nunc sed nunc dignissim placerat. Suspendisse eget vulputate ipsum, vel consequat diam."
     },
     {
-        key: 2,
-        gambar: GunungPrau,
-        gunung: 'Gunung Prau',
-        keterangan: 'Gunung Prau adalah gunung yang terletak di Dataran Tinggi Dieng. Gunung Prau dengan ketinggian 2.565 mdpl menjadi objek wisata yang populer di kalangan para turis, baik dari berbagai kota di Indonesia, maupun mancanegara.'
+        key:2,
+        image:MainImage,
+        title:"Asiknya jalan-jalan di kota batu",
+        isi:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ac arcu quis quam vehicula aliquam. Nulla in molestie augue. Integer laoreet non purus et porta. Mauris viverra nulla vitae justo imperdiet gravida. Sed neque ipsum, ornare suscipit magna et, accumsan pulvinar felis. Vestibulum malesuada pulvinar sapien, cursus luctus nulla. Nullam id velit nec odio eleifend maximus. Pellentesque tristique lectus at eros ornare, at tempus est condimentum. Morbi semper orci id nulla imperdiet varius. Pellentesque faucibus enim ipsum, ac pulvinar nulla viverra at. Praesent non nunc sed nunc dignissim placerat. Suspendisse eget vulputate ipsum, vel consequat diam."
     },
     {
-        key: 3,
-        gambar: GunungIjen,
-        gunung: 'Gunung Ijen',
-        keterangan: 'Gunung Ijen adalah gunung berapi aktif yang terletak di Jawa Timur, tepatnya di perbatasan Kabupaten Banyuwangi dan Kabupaten Bondowoso. Gunung Ijen sendiri memiliki ketinggian 2.799 mdpl.'
+        key:3,
+        image:MainImage,
+        title:"Statistik Covid 19 naek Bos",
+        isi:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ac arcu quis quam vehicula aliquam. Nulla in molestie augue. Integer laoreet non purus et porta. Mauris viverra nulla vitae justo imperdiet gravida. Sed neque ipsum, ornare suscipit magna et, accumsan pulvinar felis. Vestibulum malesuada pulvinar sapien, cursus luctus nulla. Nullam id velit nec odio eleifend maximus. Pellentesque tristique lectus at eros ornare, at tempus est condimentum. Morbi semper orci id nulla imperdiet varius. Pellentesque faucibus enim ipsum, ac pulvinar nulla viverra at. Praesent non nunc sed nunc dignissim placerat. Suspendisse eget vulputate ipsum, vel consequat diam."
     },
     {
-        key: 4,
-        gambar: GunungSemeru,
-        gunung: 'Gunung Semeru',
-        keterangan: 'Gunung Semeru adalah gunung tertinggi yang ada di Pulau Jawa. Ketinggiannya mencapai 3.676 mdpl. Banyak spot menarik yang ada di Gunung Semeru, seperti Danau Ranu Kumbolo, Tanjakan Cinta, dan Oro Oro Ombo.'
+        key:4,
+        image:MainImage,
+        title:"Randi Bacot",
+        isi:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ac arcu quis quam vehicula aliquam. Nulla in molestie augue. Integer laoreet non purus et porta. Mauris viverra nulla vitae justo imperdiet gravida. Sed neque ipsum, ornare suscipit magna et, accumsan pulvinar felis. Vestibulum malesuada pulvinar sapien, cursus luctus nulla. Nullam id velit nec odio eleifend maximus. Pellentesque tristique lectus at eros ornare, at tempus est condimentum. Morbi semper orci id nulla imperdiet varius. Pellentesque faucibus enim ipsum, ac pulvinar nulla viverra at. Praesent non nunc sed nunc dignissim placerat. Suspendisse eget vulputate ipsum, vel consequat diam."
     },
-    {
-        key: 5,
-        gambar: GunungRinjani,
-        gunung: 'Gunung Rinjani',
-        keterangan: 'Gunung Rinjani adalah gunung berapi yang memiliki ketinggian 3.726 mdpl. Gunung ini terletak di Pulau Lombok, Nusa Tenggara Barat.'
-    }
 ]
 
 export default function Home({navigation}) {
-    const onPressed = () => {
-        navigation.navigate('Detail');
+    const onPressedProfile = () => {
+        navigation.navigate('Profile');
+    };
+    const onPressedArtikelDetail = (data) => {
+        navigation.navigate('DetailArtikel', data);
+    };
+    const onPressedArtikel = () => {
+        navigation.navigate('Artikel');
     };
     return (
         <View style={styles.container}>
-            <View style={styles.topWrapper}>
-                <Text style={styles.topTextWrapper}>Kemana anda ingin mendaki ?</Text>
+            <StatusBar backgroundColor='#43cad1' barStyle="dark-content" translucent/>
+
+            {/* Header */}
+            <View style={{flexDirection:'row', padding:10, justifyContent:'space-between', backgroundColor:'#43cad1', paddingBottom:50, paddingTop:40}}>
+                <Text style={{marginLeft:20, marginTop:20, color:'white', fontSize:20, fontWeight: 'bold'}}>Home</Text>
+                <Image source={MainImage} style={{width:200, height:130, marginRight:20}}/>
             </View>
 
-            {/* lIST */}
-            <ScrollView style={{marginBottom: 100}}>
-                {data.map((e) => (
-                    <TouchableOpacity key={e.key} onPress={onPressed}>
-                        <View style={{backgroundColor: '#fff', marginVertical: 10, flexDirection: 'row', paddingVertical: 10, paddingHorizontal: 20}}>
-                            <View style={{justifyContent: 'center'}}>
-                                <Image source={e.gambar} style={styles.image}/>
-                            </View>
-                            <View style={{flexDirection: 'column', paddingLeft: 10}}>
-                                <Text style={{fontSize:18, fontWeight: 'bold'}}>{e.gunung}</Text>
-                                <View style={{width: 250}}>
-                                    <Text>{e.keterangan}</Text>
-                                </View>
-                            </View>
-                        </View>
+            {/* Profile */}
+            <TouchableOpacity onPress={onPressedProfile}>
+                <View style={{marginTop:-40}}>
+                    <View style={{backgroundColor: 'white', marginHorizontal:50, flexDirection:'row', justifyContent:'space-between', padding:10, borderRadius:10, alignItems:'center', paddingVertical:20}}>
+                        <Text style={{fontSize:20, flex:1, fontWeight:'bold', color:'#5e5e5e', paddingLeft:10 }}>Randi Nur Ardianto</Text>
+                        <Text style={{flex:0, fontSize:15, textAlign:'right', color:'#138e94', paddingHorizontal:10, fontWeight:'bold'}}>21120118130060</Text>
+                    </View>
+                </View>
+            </TouchableOpacity>
+
+            <View style={{padding:20}}>
+            <View style={styles.sessionWrapper}>
+                    <Text style={styles.sessionTitle}>Artikel Favorit</Text>
+                    <TouchableOpacity onPress={onPressedArtikel}>
+                        <Text style={{color:"#138e94"}}>See All</Text>
                     </TouchableOpacity>
+            </View>
+
+
+            <ScrollView style={styles.scrollView} showsVerticalScrollIndicator={false}>
+                {data.map((data) => (
+                    <View key={data.key}style={styles.listWrapper}>
+                        <View style={styles.imageWrapper}>
+                            <Image style={styles.listImage} source={data.image}/> 
+                            </View>
+                            <View style={styles.listMidWrapper}>
+                                <Text style={styles.midTextName}>{data.title}</Text>
+                                <Text style={styles.midTextCaption}>{data.isi}</Text>
+                            </View>
+                            <TouchableOpacity style={styles.button} onPress={() => onPressedArtikelDetail(data)}>
+                                <Text style={styles.buttonText}>Detail</Text>
+                            </TouchableOpacity>
+                    </View>
                 ))}
             </ScrollView>
+
+            
+            </View>
+
         </View>
     )
 }
-const {width} = Dimensions.get('screen');
+
+const width = Dimensions.get('window').width/4.5;
+const height = Dimensions.get('window').height/11;
 const styles = StyleSheet.create({
-    image: {
-        width: 100,
-        height: 100,
-        borderRadius: 30,
-      },
-    topWrapper:{
-        height: 100, 
-        backgroundColor: 'white', 
-        justifyContent: 'center', 
-        alignItems: 'center'
+    buttonText:{
+        color:'#138e94'
     },
-    topTextWrapper:{
-        fontSize: 20, 
-        fontWeight: 'bold', 
-        color: 'brown'
+    container:{
+        flex:1
+    },
+    button:{
+        flex:0, 
+        justifyContent: 'center', 
+        alignItems: 'center', 
+        marginLeft:15
+    },
+    midTextCaption:{
+        color:'grey', 
+        textAlign:'left',
+        height:46
+    },
+    midTextName:{
+        fontSize:16, 
+        fontWeight: 'bold'
+    },
+    listMidWrapper:{
+        marginTop:7,
+        flex:2, 
+        marginLeft:3
+    },
+    listImage:{
+        width, 
+        height, 
+        borderRadius:10
+    },
+    imageWrapper:{
+        flex:1, 
+        justifyContent: 'center', 
+        alignItems: 'baseline'
+    },
+    scrollView:{
+        marginBottom:299
+    },
+    sessionTitle:{
+        fontSize:18, 
+        fontWeight: 'bold'
+    },
+    sessionWrapper:{
+        marginTop:15,
+        flexDirection:'row',
+        justifyContent:'space-between',
+        marginHorizontal:10,
+        alignItems:'center'
+    },
+    image:{
+        width: width + 50, 
+        height: width + 30,
+    },
+    headerTextWrapper:{
+        padding:10, 
+        marginTop:7
+    },
+    headerWrapper:{
+        borderRadius: 20, 
+        backgroundColor: '#34ebd8', 
+        flexDirection: 'row', 
+        justifyContent: 'space-between', 
+        padding:20
+    },
+    wrapper:{
+        padding: 20
+    },
+    headerText:{
+        color: '#fcfcfc', 
+        fontSize:22, 
+        fontWeight: 'bold'
+    },
+    listWrapper:{
+        marginTop: 15,
+        flexDirection: 'row',
+        backgroundColor: '#fff',
+        padding:10,
+        borderRadius:20,
     }
-  });
-  
+})
