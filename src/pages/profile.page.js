@@ -21,7 +21,7 @@ export default class Profile extends Component {
         <View style={{justifyContent:'center', alignItems:'center', marginTop:20}}>
           <Text style={{fontSize:20, fontWeight:'bold'}}>Randi Nur Ardianto</Text>
           <Text style={{marginBottom:20}}>21120118130069</Text>
-          <Text style={{fontSize:20, fontWeight:'bold', color:'#43cad1'}}>synthetic30@Gmail.com</Text>
+          <Text style={{fontSize:20, fontWeight:'bold', color:'#43cad1'}}>randinur30@Gmail.com</Text>
           <Text style={{fontSize:20, fontWeight:'bold'}}>Universitas Diponegoro</Text>
         </View>
       </View>

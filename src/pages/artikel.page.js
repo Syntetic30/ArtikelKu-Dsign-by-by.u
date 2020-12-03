@@ -71,7 +71,7 @@ export default function Artikel({navigation}) {
             <View style={{marginTop:-20}}>
                 <View style={{backgroundColor: 'white', marginHorizontal:50, justifyContent:'space-between', padding:10, borderRadius:10, alignItems:'center', paddingVertical:20}}>
                     <View style={{flexDirection:'row', alignItems:'center',justifyContent:'space-between', paddingHorizontal:10}}>
-                        <Text style={{flex:1}}>Tulisan</Text>
+                        <Text style={{flex:1, fontWeight:'bold'}}>Tulisan</Text>
                         <FontAwesomeIcon icon={faBook} style={{flex:1}} />
                     </View>
                 
